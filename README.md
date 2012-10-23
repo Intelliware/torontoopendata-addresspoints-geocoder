@@ -5,7 +5,7 @@ Primitive Geocoder REST web service to provide [address geocoding](http://en.wik
 
 Given a well formed Toronto street address, such as "200 Adelaide St W", the service will return details associated with that address.
 * Primitive address parsing at the moment....
-* Every Toronto address is geoceded so noneed for address interpolation
+* Every Toronto address is geoceded so no need for address interpolation
 * Returns Latitude and Longitude of address
 * For more details see the [source dataset information](http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD). 
 
@@ -34,7 +34,7 @@ Building and Running
     npm install
     node geocode.js
 
-You should then be able to hit the local service at: http://localhost:8081
+You should then be able to hit the local service at: [http://localhost:8081](http://localhost:8081)
 
 By default the code will use a read-only database of addresses hosted on MongoHQ. You can instead use an alternative Mongo DB by setting the MONGO_URL and MONGO_COLLECTION environment variables.
 
