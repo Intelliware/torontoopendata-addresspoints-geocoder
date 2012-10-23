@@ -1,5 +1,5 @@
 {
-	"name": "toronto-addresspoints-geocode",
+	"name": "torontoopendata-addresspoints-geocoder",
 	"version": "1.0.0",
 	"author": {
 		"name": "David Jones",
