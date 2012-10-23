@@ -1,0 +1,16 @@
+{
+	"name": "toronto-addresspoints-geocode",
+	"version": "1.0.0",
+	"author": {
+		"name": "David Jones",
+		"email": "david@intelliware.ca"
+	},
+	"dependencies": {
+		"restify": "1.4.x",
+		"mongodb": "1.1.x"
+	},
+	"engines": {
+		"node": "0.8.x",
+		"npm": "1.1.x"
+	}
+}
