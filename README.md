@@ -42,9 +42,9 @@ By default the code will use a read-only database of addresses hosted on MongoHQ
 Licence
 -------
 
-This tool is made available under the [MIT licence](http://opensource.org/licenses/mit-license.php).
+This tool is made available under the [MIT licence](https://github.com/Intelliware/torontoopendata-addresspoints-geocoder/blob/master/LICENSE).
 
-The Dataset is made available under the [Open Data Licence for City of Toronto Datasets](http://www1.toronto.ca/wps/portal/open_data/open_data_fact_sheet_details?vgnextoid=59986aa8cc819210VgnVCM10000067d60f89RCRD).
+Contains public sector Datasets made available under the [City of Toronto's Open Data Licence v2.0](http://www1.toronto.ca/wps/portal/open_data/open_data_fact_sheet_details?vgnextoid=59986aa8cc819210VgnVCM10000067d60f89RCRD).
 
 
 
