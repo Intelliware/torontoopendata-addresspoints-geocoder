@@ -56,6 +56,7 @@ function handleGeocode(req, res, next) {
 		var street = extractStreet(q);
 		processGeocode(req, res, next, number, street);
 	} else {
+		console.log('search=streetaddress match=error message="no-q-field"');
 		res.send(400, 'Missing query: q');
 		return next;
 	}
@@ -84,12 +85,12 @@ function processGeocode(req, res, next, number, street) {
 	addresses.findOne({'LF_NAME':street, 'ADDRESS':number}, function(err, item) {
 		if (!err) {
 			if (item) {
-				console.log('found: '+item.ADDRESS+' '+item.LF_NAME);
+				console.log('search=streetaddress match=full found="'+item.ADDRESS+' '+item.LF_NAME+'"');
 				var output = generateFoundJson(item);
 				res.send(output);
 				return next;
 			} else {
-				console.log('not found: '+number+' '+street);
+				console.log('search=streetaddress match=none searchfor="'+number+' '+street+'"');
 				var output = {
 					'status': 404,
 					'message': 'No location found for: '+number+' '+street
