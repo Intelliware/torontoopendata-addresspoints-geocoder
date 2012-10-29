@@ -81,7 +81,7 @@ function extractStreet(q) {
 }
 
 function processGeocode(req, res, next, number, street) {
-	addresses.findOne({'street':street, 'address':number}, function(err, item) {
+	addresses.findOne({'LF_NAME':street, 'ADDRESS':number}, function(err, item) {
 		if (!err) {
 			if (item) {
 				console.log('found: '+item.address);
@@ -90,8 +90,8 @@ function processGeocode(req, res, next, number, street) {
 					'location': {
 						'id': item.id,
 						'address': {
-							'number': item.address,
-							'street': item.street,
+							'number': item.ADDRESS,
+							'street': item.LF_NAME,
 						},
 						'latLng': {
 							'lat': item.lat,
