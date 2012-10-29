@@ -84,21 +84,8 @@ function processGeocode(req, res, next, number, street) {
 	addresses.findOne({'LF_NAME':street, 'ADDRESS':number}, function(err, item) {
 		if (!err) {
 			if (item) {
-				console.log('found: '+item.address);
-				var output = {
-					'status': 200,
-					'location': {
-						'id': item.id,
-						'address': {
-							'number': item.ADDRESS,
-							'street': item.LF_NAME,
-						},
-						'latLng': {
-							'lat': item.lat,
-							'lng': item.lng
-						}
-					}
-				};
+				console.log('found: '+item.ADDRESS+' '+item.LF_NAME);
+				var output = generateFoundJson(item);
 				res.send(output);
 				return next;
 			} else {
@@ -114,6 +101,43 @@ function processGeocode(req, res, next, number, street) {
 			return next(err);
 		}
 	});
+}
+
+function generateFoundJson(item) {
+	return {
+		'status': 200,
+		'location': {
+			'id': item.GEO_ID,
+			'placeName': item.NAME,
+			'address': {
+				'number': item.ADDRESS,
+				'street': item.LF_NAME,
+				'city': 'Toronto',
+				'region': 'Ontario',
+				'country': 'CA'
+			},
+			'latLng': {
+				'lat': item.lat,
+				'lng': item.lng,
+				'crs': 'EPSG:4326'
+			},
+			'feature': {
+				'description': item.FCODE_DESC,
+				'code': item.FCODE,
+			},
+			'data': {
+				'class': item.CLASS,
+				'arcSide': item.ARC_SIDE,
+				'distance': item.DISTANCE,
+				'lowNumber': item.LO_NUM,
+				'lowNumberSuffix': item.LO_NUM_SUF,
+				'highNumber': item.HI_NUM,
+				'highNumberSuffix': item.HI_NUM_SUF,
+				'primaryAdressId': item.LINK,
+				'streetNameIdentity': item.LFN_ID
+			}
+		}
+	};
 }
 
 function handleHomePage(req, res, next) {
