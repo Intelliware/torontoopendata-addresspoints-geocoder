@@ -32,7 +32,7 @@ Building and Running
 --------------------
 
     npm install
-    node geocode.js
+    node server.js
 
 You should then be able to hit the local service at: [http://localhost:8081](http://localhost:8081)
 
