@@ -1,1 +1,1 @@
-web: node geocode.js
+web: node server.js
