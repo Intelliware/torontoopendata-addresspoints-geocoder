@@ -21,6 +21,11 @@ exports.handleGeocode = function(req, res, next) {
 	}
 }
 
+// Just for tests....
+exports.sanitizeWhitespace = sanitizeWhitespace;
+exports.extractNumber = extractNumber;
+exports.extractStreet = extractStreet;
+
 // Internal API
 
 function sanitizeWhitespace(s) {
@@ -29,7 +34,7 @@ function sanitizeWhitespace(s) {
 
 function extractNumber(q) {
 	var words = sanitizeWhitespace(q).split(" ");
-	if (words.length > 0) {
+	if (words.length > 0 && /^\d/.test(words[0])) {
 		return words[0];
 	} else {
 		return '';
@@ -38,7 +43,14 @@ function extractNumber(q) {
 
 function extractStreet(q) {
 	var s = sanitizeWhitespace(q);
-	s = s.substr(s.indexOf(" ") + 1);
+	var number = extractNumber(q);
+	if (number.length > 0) {
+		if (s.indexOf(" ") == -1) {
+			s = '';
+		} else {
+			s = s.substr(s.indexOf(" ") + 1);
+		}
+	}
 	return s.toUpperCase();
 }
 

@@ -12,17 +12,20 @@ var addresses = null;
 
 // Startup
 
-mongo.connect(mongoUrl, {}, function(err, db) {
-	if (!err) {
-		console.log('Connected to mongo db: '+mongoUrl);
-		mongoDb = db;
-		openAddressesCollection();		
-	} else {
-		console.log('failed to open mongodb: '+err);
-	}
-});
 
 // Public API
+
+exports.start = function() {
+	mongo.connect(mongoUrl, {}, function(err, db) {
+		if (!err) {
+			console.log('Connected to mongo db: '+mongoUrl);
+			mongoDb = db;
+			openAddressesCollection();		
+		} else {
+			console.log('failed to open mongodb: '+err);
+		}
+	});
+};
 
 // Lookup up the item associated with "number street"
 exports.findStreetAddress = function(number, street, handler) {

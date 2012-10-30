@@ -7,12 +7,14 @@
  */
 
 var restify = require('restify');
+ var db = require('./db');
 
 var homePage = require('./handle_home');
 var geocode = require('./handle_geocode');
 
 var server = null;
 
+db.start();
 runServer();
 
 function runServer() {
