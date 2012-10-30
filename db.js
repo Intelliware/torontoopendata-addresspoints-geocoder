@@ -10,6 +10,7 @@ var mongoCollection = process.env.MONGO_COLLECTION || 'addresses';
 var mongoDb = null;
 var addresses = null;
 
+var startupError = null;
 // Startup
 
 
@@ -22,7 +23,8 @@ exports.start = function() {
 			mongoDb = db;
 			openAddressesCollection();		
 		} else {
-			console.log('failed to open mongodb: '+err);
+			startupError = 'failed to open mongodb: '+err;
+			console.log(startupError);
 		}
 	});
 };
@@ -30,6 +32,14 @@ exports.start = function() {
 // Lookup up the item associated with "number street"
 exports.findStreetAddress = function(number, street, handler) {
 	addresses.findOne({'LF_NAME':street, 'ADDRESS':number}, handler);
+}
+
+exports.checkStatus = function(callback) {
+	if (addresses) {
+		addresses.find().count(callback);
+	} else {
+		callback(startupError ? startupError : 'Mongo collection not found', null);
+	};
 }
 
 // Internal API
@@ -40,7 +50,8 @@ function openAddressesCollection() {
 			addresses = collection;
 			validateAddressesConnection();
 		} else {
-			console.log('Error: failed to access collection: '+err);
+			startupError = 'Error: failed to access collection: '+err; 
+			console.log(startupError);
 		}
 	});
 

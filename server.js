@@ -7,10 +7,12 @@
  */
 
 var restify = require('restify');
- var db = require('./db');
+
+var db = require('./db');
 
 var homePage = require('./handle_home');
 var geocode = require('./handle_geocode');
+var status = require('./handle_status');
 
 var server = null;
 
@@ -25,6 +27,7 @@ function runServer() {
 	
 	server.get('/', homePage.handleHomePage);
 	server.get('/locations', geocode.handleGeocode);
+	server.get('/status', status.handle);
 	
 	var listenPort = process.env.PORT || 8081;
 	server.listen(listenPort);
