@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link
+	href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css"
+	rel="stylesheet">
+<style>
+.chart {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+}
+
+text {
+  font-size: 10px;
+}
+
+rect {
+  fill: none;
+}</style>
+</head>
+<body>
+	<div class="container">
+		<div class="hero-unit">
+			<h1>Toronto Address Points Open Dataset Geocoder</h1>
+			<p>Open source REST service to provide information for any address in Toronto, Canada.</p>
+			<p>
+				<a
+					href="https://github.com/Intelliware/torontoopendata-addresspoints-geocoder">Learn
+					more</a> about the open-source Geocoder.
+			</p>
+			<p>
+			Contains public sector Datasets made available under the <a href="http://www1.toronto.ca/wps/portal/open_data/open_data_fact_sheet_details?vgnextoid=59986aa8cc819210VgnVCM10000067d60f89RCRD">City of Toronto's Open Data Licence v2.0</a>.
+			</p>
+		</div>
+		
+		<h2>Examples</h2>
+		<p>
+			Try out the service for <a
+				href="/locations?q=200%20Adelaide%20St%20W">200 Adelaide St W,
+				Toronto</a>.
+		</p>
+		
+		<h2>Address Statistics</h2>
+		<div class="row">
+			<div class="span4">
+			<dl>
+				<dt>Total Addresses</dt>
+				<dd>514,141</dd>
+				<dt>Total Streets</dt>
+				<dd>9,358</dd>
+				<dt>Publisher</dt>
+				<dd><a href="http://www1.toronto.ca/wps/portal/open_data/open_data_item_details?vgnextoid=91415f9cd70bb210VgnVCM1000003dd60f89RCRD&vgnextchannel=6e886aa8cc819210VgnVCM10000067d60f89RCRD">Toronto Address Points Open Dataset</a></dd>
+				<dt>Dataset</dt>
+				<dd>address_points_wgs84_apr2012.zip</dd>
+			</dl>
+			</div>
+			<div class="span7" id="categories">
+			</div>
+		</div>
+	</div>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+	<script src="http://d3js.org/d3.v2.min.js"></script>
+	<script type="text/javascript">
+	var w = 750,
+    h = 500,
+    x = d3.scale.linear().range([0, w]),
+    y = d3.scale.linear().range([0, h]),
+    color = d3.scale.category20c(),
+    root,
+    node;
+
+var treemap = d3.layout.treemap()
+    .round(false)
+    .size([w, h])
+    .sticky(true)
+    .value(function(d) { return d.total; });
+
+var svg = d3.select("#categories").append("div")
+    .attr("class", "chart")
+    .style("width", w + "px")
+    .style("height", h + "px")
+  .append("svg:svg")
+    .attr("width", w)
+    .attr("height", h)
+  .append("svg:g")
+    .attr("transform", "translate(.5,.5)");
+
+d3.json("stats.json", function(data) {
+  node = root = data.categories;
+
+  var nodes = treemap.nodes(root)
+      .filter(function(d) { return !d.children; });
+
+  var cell = svg.selectAll("g")
+      .data(nodes)
+    .enter().append("svg:g")
+      .attr("class", "cell")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); })
+      /*.on("hover", )*/
+      ;
+
+  cell.append("svg:rect")
+      .attr("width", function(d) { return d.dx - 1; })
+      .attr("height", function(d) { return d.dy - 1; })
+      .style("fill", function(d) { return color(d.parent.category); });
+
+  cell.append("svg:text")
+      .attr("x", function(d) { return d.dx / 2; })
+      .attr("y", function(d) { return d.dy / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .text(function(d) { return d.category; })
+      .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+
+  d3.select(window).on("click", function() { zoom(root); });
+
+  d3.select("select").on("change", function() {
+    treemap.value(this.value == "total" ? total : count).nodes(root);
+    zoom(node);
+  });
+});
+
+function total(d) {
+  return d.total;
+}
+
+function count(d) {
+  return 1;
+}
+
+function zoom(d) {
+  var kx = w / d.dx, ky = h / d.dy;
+  x.domain([d.x, d.x + d.dx]);
+  y.domain([d.y, d.y + d.dy]);
+
+  var t = svg.selectAll("g.cell").transition()
+      .duration(d3.event.altKey ? 7500 : 750)
+      .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+  t.select("rect")
+      .attr("width", function(d) { return kx * d.dx - 1; })
+      .attr("height", function(d) { return ky * d.dy - 1; })
+
+  t.select("text")
+      .attr("x", function(d) { return kx * d.dx / 2; })
+      .attr("y", function(d) { return ky * d.dy / 2; })
+      .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
+
+  node = d;
+  d3.event.stopPropagation();
+}
+	
+	</script>
+</body>
+</html>

@@ -26,6 +26,7 @@ function runServer() {
 	server.use(restify.queryParser());
 	
 	server.get('/', homePage.handleHomePage);
+	server.get('/stats.json', require('./handle_stats').handle);
 	server.get('/locations', geocode.handleGeocode);
 	server.get('/status', status.handle);
 	

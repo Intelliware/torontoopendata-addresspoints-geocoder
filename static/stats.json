@@ -1,0 +1,336 @@
+{
+  "totalAddresses": 514141,
+  "totalStreets": 9358,
+  "categories": {
+    "category": "all",
+    "children": [
+      {
+        "category": "100000",
+        "children": [
+          {
+            "category": "Low Density Residential",
+            "total": 370519
+          },
+          {
+            "category": "High Density Residential - Apartment",
+            "total": 3667
+          },
+          {
+            "category": "Subsidized Housing",
+            "total": 1
+          }
+        ]
+      },
+      {
+        "category": "101000",
+        "children": [
+          {
+            "category": "Hospital, Private and Public",
+            "total": 72
+          },
+          {
+            "category": "Old Age/Retirement Home",
+            "total": 86
+          },
+          {
+            "category": "Day Care",
+            "total": 25
+          },
+          {
+            "category": "Hostel",
+            "total": 3
+          },
+          {
+            "category": "Nursing Home, all types",
+            "total": 39
+          },
+          {
+            "category": "Penal Institution",
+            "total": 3
+          },
+          {
+            "category": "Other Medical/Dental",
+            "total": 107
+          }
+        ]
+      },
+      {
+        "category": "102000",
+        "children": [
+          {
+            "category": "Public School - Primary",
+            "total": 545
+          },
+          {
+            "category": "Public School - Secondary",
+            "total": 113
+          },
+          {
+            "category": "Separate School - Primary",
+            "total": 177
+          },
+          {
+            "category": "Separate School - Secondary",
+            "total": 40
+          },
+          {
+            "category": "Private School",
+            "total": 9
+          },
+          {
+            "category": "College",
+            "total": 34
+          },
+          {
+            "category": "University",
+            "total": 92
+          },
+          {
+            "category": "Other Educational Institution",
+            "total": 142
+          }
+        ]
+      },
+      {
+        "category": "103000",
+        "children": [
+          {
+            "category": "Ambulance Station",
+            "total": 28
+          },
+          {
+            "category": "Fire Station",
+            "total": 68
+          },
+          {
+            "category": "Police Station",
+            "total": 22
+          },
+          {
+            "category": "Other Emergency Service",
+            "total": 27
+          },
+          {
+            "category": "Fire/Ambulance Stations",
+            "total": 17
+          }
+        ]
+      },
+      {
+        "category": "104000",
+        "children": [
+          {
+            "category": "Municipal City Hall",
+            "total": 8
+          },
+          {
+            "category": "Municipal Other",
+            "total": 31
+          },
+          {
+            "category": "Regional Other",
+            "total": 1
+          },
+          {
+            "category": "Provincial Legislature",
+            "total": 1
+          },
+          {
+            "category": "Provincial Other",
+            "total": 2
+          },
+          {
+            "category": "Federal Office Building",
+            "total": 4
+          },
+          {
+            "category": "Other Office Building",
+            "total": 1488
+          }
+        ]
+      },
+      {
+        "category": "106000",
+        "children": [
+          {
+            "category": "Municipal Park",
+            "total": 1463
+          },
+          {
+            "category": "Regional Park",
+            "total": 89
+          },
+          {
+            "category": "Federal Park",
+            "total": 1
+          },
+          {
+            "category": "Sport Complex",
+            "total": 99
+          },
+          {
+            "category": "Golf Course",
+            "total": 25
+          },
+          {
+            "category": "Community/Assembly Hall",
+            "total": 189
+          },
+          {
+            "category": "Other Recreational Facility",
+            "total": 138
+          }
+        ]
+      },
+      {
+        "category": "107000",
+        "children": [
+          {
+            "category": "Restaurant",
+            "total": 220
+          },
+          {
+            "category": "Concert Hall/Theatre/Cinema",
+            "total": 34
+          },
+          {
+            "category": "Regional Shopping Centre",
+            "total": 17
+          },
+          {
+            "category": "Community Shopping Centre",
+            "total": 35
+          },
+          {
+            "category": "Neighbourhood Shopping Centre",
+            "total": 666
+          },
+          {
+            "category": "Hotel",
+            "total": 131
+          },
+          {
+            "category": "Exhibition/Fair Ground",
+            "total": 37
+          },
+          {
+            "category": "Museum/Art Gallery",
+            "total": 19
+          },
+          {
+            "category": "Library",
+            "total": 96
+          },
+          {
+            "category": "Other Point of Interest",
+            "total": 6214
+          }
+        ]
+      },
+      {
+        "category": "108000",
+        "children": [
+          {
+            "category": "Subway Station",
+            "total": 34
+          },
+          {
+            "category": "Rapid Transit Station",
+            "total": 2
+          },
+          {
+            "category": "GO Bus Terminal",
+            "total": 1
+          },
+          {
+            "category": "GO Train Station",
+            "total": 6
+          },
+          {
+            "category": "Airport",
+            "total": 3
+          },
+          {
+            "category": "Parking Lot",
+            "total": 349
+          },
+          {
+            "category": "Railway Station",
+            "total": 22
+          },
+          {
+            "category": "Other Transportation Facility",
+            "total": 93
+          }
+        ]
+      },
+      {
+        "category": "109000",
+        "children": [
+          {
+            "category": "Place of Worship",
+            "total": 1107
+          },
+          {
+            "category": "Cemetery",
+            "total": 77
+          }
+        ]
+      },
+      {
+        "category": "110000",
+        "children": [
+          {
+            "category": "Other Use",
+            "total": 265
+          }
+        ]
+      },
+      {
+        "category": "111000",
+        "children": [
+          {
+            "category": "Farm",
+            "total": 33
+          }
+        ]
+      },
+      {
+        "category": "112000",
+        "children": [
+          {
+            "category": "Commercial Location",
+            "total": 6591
+          }
+        ]
+      },
+      {
+        "category": "113000",
+        "children": [
+          {
+            "category": "Industrial Location",
+            "total": 5045
+          }
+        ]
+      },
+      {
+        "category": "114000",
+        "children": [
+          {
+            "category": "Vacant Location",
+            "total": 3695
+          }
+        ]
+      },
+      {
+        "category": "115000",
+        "children": [
+          {
+            "category": "Unknown",
+            "total": 109974
+          }
+        ]
+      }
+    ]
+  }
+}
