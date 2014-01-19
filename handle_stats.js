@@ -13,9 +13,10 @@ fs.readFile('static/stats.json', 'utf8', function (err,data) {
 		content = data;
 	}
 });
+
 exports.handle = function(req, res, next) {
 	writeHtml(content, res);
-}
+};
 
 function writeHtml(body, res) {
 	res.writeHead(200, {

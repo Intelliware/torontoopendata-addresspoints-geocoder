@@ -32,15 +32,15 @@ exports.start = function() {
 // Lookup up the item associated with "number street"
 exports.findStreetAddress = function(number, street, handler) {
 	addresses.findOne({'LF_NAME':street, 'ADDRESS':number}, handler);
-}
+};
 
 exports.checkStatus = function(callback) {
 	if (addresses) {
 		addresses.find().count(callback);
 	} else {
 		callback(startupError ? startupError : 'Mongo collection not found', null);
-	};
-}
+	}
+};
 
 // Internal API
 

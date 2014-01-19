@@ -28,7 +28,7 @@
  		res.send(body);
  		return next;
  	});
-}
+};
 
 // Internal API
 
@@ -43,6 +43,6 @@ function failBody(err) {
  					'state': 'fail'
  				}
  			};
-};
+}
  
  

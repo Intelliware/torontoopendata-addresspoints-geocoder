@@ -15,7 +15,7 @@ fs.readFile('static/index.html', 'utf8', function (err,data) {
 });
 exports.handleHomePage = function(req, res, next) {
 	writeHtml(content, res);
-}
+};
 
 function writeHtml(body, res) {
 	res.writeHead(200, {

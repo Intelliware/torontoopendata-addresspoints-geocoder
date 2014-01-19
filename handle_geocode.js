@@ -19,7 +19,7 @@ exports.handleGeocode = function(req, res, next) {
 		res.send(400, 'Missing query: q');
 		return next;
 	}
-}
+};
 
 // Just for tests....
 exports.sanitizeWhitespace = sanitizeWhitespace;
@@ -97,7 +97,7 @@ function generateFoundJson(item) {
 			},
 			'feature': {
 				'description': item.FCODE_DESC,
-				'code': item.FCODE,
+				'code': item.FCODE
 			},
 			'data': {
 				'class': item.CLASS,
