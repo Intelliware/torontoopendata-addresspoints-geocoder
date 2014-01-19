@@ -1,6 +1,6 @@
 {
 	"name": "torontoopendata-addresspoints-geocoder",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": {
 		"name": "David Jones",
 		"email": "david@intelliware.ca"
@@ -9,6 +9,13 @@
 		"restify": "1.4.x",
 		"mongodb": "1.1.x"
 	},
+    "devDependencies": {
+        "mocha": "1.17.x",
+        "chai": "1.8.x"
+    },
+    "scripts": {
+        "test": "node_modules/mocha/bin/mocha"
+    },
 	"engines": {
 		"node": "0.8.x",
 		"npm": "1.1.x"
