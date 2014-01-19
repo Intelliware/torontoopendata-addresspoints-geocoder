@@ -2,8 +2,9 @@
  * Handle Geocode requests
  */
 
- var db = require('./db');
- 
+var db = require('./db');
+var addressExtractor = require('./address_extractor');
+
  // Initialization
  
  // Public API
@@ -11,8 +12,8 @@
 exports.handleGeocode = function(req, res, next) {
 	var q = req.query.q;
 	if (q) {
-		var number = extractNumber(q);
-		var street = extractStreet(q);
+		var number = addressExtractor.extractNumber(q);
+		var street = addressExtractor.extractStreet(q);
 		processGeocode(req, res, next, number, street);
 	} else {
 		console.log('search=streetaddress match=error message="no-q-field"');
@@ -21,38 +22,8 @@ exports.handleGeocode = function(req, res, next) {
 	}
 };
 
-// Just for tests....
-exports.sanitizeWhitespace = sanitizeWhitespace;
-exports.extractNumber = extractNumber;
-exports.extractStreet = extractStreet;
 
 // Internal API
-
-function sanitizeWhitespace(s) {
-	return s.replace(/\s+/g, ' ').replace(/^\s+|\s+$/g,'');
-}
-
-function extractNumber(q) {
-	var words = sanitizeWhitespace(q).split(" ");
-	if (words.length > 0 && /^\d/.test(words[0])) {
-		return words[0];
-	} else {
-		return '';
-	}
-}
-
-function extractStreet(q) {
-	var s = sanitizeWhitespace(q);
-	var number = extractNumber(q);
-	if (number.length > 0) {
-		if (s.indexOf(" ") == -1) {
-			s = '';
-		} else {
-			s = s.substr(s.indexOf(" ") + 1);
-		}
-	}
-	return s.toUpperCase();
-}
 
 function processGeocode(req, res, next, number, street) {
 	db.findStreetAddress(number, street, function(err, item) {

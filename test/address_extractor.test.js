@@ -1,6 +1,6 @@
 var should = require('chai').should();
 
-var HandleGeocode = require('../handle_geocode');
+var HandleGeocode = require('../address_extractor');
 
 describe("Parsing input", function() {
 	it("sanitize whitespace and result in regular single space output for later output", function() {
